@@ -1,17 +1,17 @@
 import axios from 'axios';
-export const FETCH_RESOURCES_SUCCESS = 'FETCH_RESOURCES_SUCCESS';
-export const ADD_RESOURCE = 'ADD_RESOURCE';
-export const EDIT_RESOURCE = 'EDIT_RESOURCE'
-export const DELETE_RESOURCE = 'DELETE_RESOURCE';
+export const FETCH_BOARDOFDIRECTORS_SUCCESS = 'FETCH_BOARDOFDIRECTORS_SUCCESS';
+export const ADD_BOARDOFDIRECTOR = 'ADD_BOARDOFDIRECTOR';
+export const EDIT_BOARDOFDIRECTOR = 'EDIT_BOARDOFDIRECTOR'
+export const DELETE_BOARDOFDIRECTOR = 'DELETE_BOARDOFDIRECTOR';
 
-const apiURL = 'http://localhost:8000/resources';
+const apiURL = 'http://localhost:8000/boardofdirectors';
 
-export const addResource = (title, url) => {
+export const addResource = (firstName, lastName, title) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/add`, {title, url })
+      .post(`${apiURL}/add`, {firstName, lastName, title })
       .then(res => dispatch({
-        type: ADD_RESOURCE,
+        type: ADD_BOARDOFDIRECTOR,
         payload: res.data
       }))
   }
@@ -22,7 +22,7 @@ export const deleteResource = id => {
     axios
       .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
-        type: DELETE_RESOURCE,
+        type: DELETE_BOARDOFDIRECTOR,
         payload: res.data
       }));
   };
@@ -33,7 +33,7 @@ export const editResource = id => {
     axios
       .patch(`${apiURL}/edit/${id}`)
       .then(res => dispatch({
-        type: EDIT_RESOURCE,
+        type: EDIT_BOARDOFDIRECTOR,
         payload: res.data
       }))
   }
@@ -44,7 +44,7 @@ export const fetchResources = () => {
     axios
       .get(`${apiURL}`)
       .then(res => dispatch({
-        type: FETCH_RESOURCES_SUCCESS,
+        type: FETCH_BOARDOFDIRECTORS_SUCCESS,
         payload: res.data
       }));
   };
