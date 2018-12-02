@@ -1,7 +1,6 @@
 import axios from 'axios';
 export const FETCH_PROGRAMS_SUCCESS = 'FETCH_PROGRAMS_SUCCESS';
-export const FETCH_SECONDARYPROGRAMS_SUCCESS = 'FETCH_SECONDARYPROGRAMS_SUCCESS';
-export const FETCH_ALL = 'FETCH_ALL';
+// export const FETCH_AWARDS_SUCCESS = 'FETCH_AWARDS_SUCCESS';
 export const ADD_PROGRAM = 'ADD_PROGRAM';
 export const EDIT_PROGRAM = 'EDIT_PROGRAM'
 export const DELETE_PROGRAM = 'DELETE_PROGRAM';
@@ -16,7 +15,7 @@ export const addProgram = (title, description) => {
         type: ADD_PROGRAM,
         payload: res.data
       }))
-  }
+  };
 }
 
 export const deleteProgram = id => {
@@ -37,21 +36,20 @@ export const editProgram = id => {
       .then(res => dispatch({
         type: EDIT_PROGRAM,
         payload: res.data
-      }))
-  }
+      }));
+  };
 }
 
 export const fetchPrograms = () => {
+  // const promises = [];
+  // promises.push(axios.get(`${apiURL}`).then(res => dispatch({type: FETCH_PROGRAMS_SUCCESS, payload: res.data})));
+  // promises.push(axios.get(`${apiURL}`).then(res => dispatch({type: FETCH_AWARDS_SUCCESS, payload: res.data})));
   return dispatch => {
-    const promises = [];
-    promises.push(axios.get(`${apiURL}`).then(res => dispatch({type: FETCH_PROGRAMS_SUCCESS, payload: res.data})));
-    promises.push(axios.get(`${apiURL}`).then(res => dispatch({type: FETCH_SECONDARYPROGRAMS_SUCCESS, payload: res.data})));
-
-    return dispatch => {
-      Promise.all(promises).then(res => dispatch({
-        type: FETCH_ALL,
+    axios
+      .get(`${apiURL}`)
+      .then(res => dispatch({
+        type: FETCH_PROGRAMS_SUCCESS,
         payload: res.data
-      }))
-    }
+      }));
   };
 }
