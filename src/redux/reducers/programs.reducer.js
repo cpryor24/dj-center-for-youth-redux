@@ -2,7 +2,8 @@ import {
   ADD_PROGRAM,
   DELETE_PROGRAM,
   EDIT_PROGRAM,
-  FETCH_PROGRAMS_SUCCESS
+  FETCH_PROGRAMS_SUCCESS,
+  FETCH_AWARDS_SUCCESS
 } from '../actions/programs.actions';
 
 const initialState = [];
@@ -21,6 +22,9 @@ export default (state = initialState, action) => {
       return state.filter(program => program.id !== Number(theselectedId));
 
     case FETCH_PROGRAMS_SUCCESS:
+      return action.payload;
+
+    case FETCH_AWARDS_SUCCESS:
       return action.payload;
 
     default:

@@ -6,10 +6,10 @@ export const DELETE_COMMUNITY_PARTNER = 'DELETE_COMMUNITY_PARTNER';
 
 const apiURL = 'http://localhost:8000/communitypartners';
 
-export const addCommunityPartner= (title, url) => {
+export const addCommunityPartner = (newCommunityPartner) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/add`, {title, url })
+      .post(`${apiURL}`, newCommunityPartner)
       .then(res => dispatch({
         type: ADD_COMMUNITY_PARTNER,
         payload: res.data
@@ -23,7 +23,7 @@ export const deleteCommunityPartner= id => {
       .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_COMMUNITY_PARTNER,
-        payload: res.data
+        payload: id
       }));
   };
 }

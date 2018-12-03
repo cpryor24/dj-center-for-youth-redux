@@ -3,7 +3,7 @@ import {
   DELETE_PHOTO,
   EDIT_PHOTO,
   FETCH_PHOTOS_SUCCESS
-} from '../actions.photos.actions';
+} from '../actions/photos.actions';
 
 const initialState = [];
 
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
 
     case FETCH_PHOTOS_SUCCESS:
       return action.payload;
-      
+
     default:
       return state;
   }

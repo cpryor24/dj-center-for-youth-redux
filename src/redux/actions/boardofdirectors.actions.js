@@ -6,10 +6,10 @@ export const DELETE_BOARDOFDIRECTOR = 'DELETE_BOARDOFDIRECTOR';
 
 const apiURL = 'http://localhost:8000/boardofdirectors';
 
-export const addResource = (firstName, lastName, title) => {
+export const addBoardOfDirector = (newBoardOfDirector) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/add`, {firstName, lastName, title })
+      .post(`${apiURL}`, newBoardOfDirector)
       .then(res => dispatch({
         type: ADD_BOARDOFDIRECTOR,
         payload: res.data
@@ -17,18 +17,18 @@ export const addResource = (firstName, lastName, title) => {
   }
 }
 
-export const deleteResource = id => {
+export const deleteBoardOfDirector = id => {
   return dispatch => {
     axios
       .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_BOARDOFDIRECTOR,
-        payload: res.data
+        payload: id
       }));
   };
 }
 
-export const editResource = id => {
+export const editBoardOfDirector = id => {
   return dispatch => {
     axios
       .patch(`${apiURL}/edit/${id}`)
@@ -39,7 +39,7 @@ export const editResource = id => {
   }
 }
 
-export const fetchResources = () => {
+export const fetchBoardOfDirectors = () => {
   return dispatch => {
     axios
       .get(`${apiURL}`)

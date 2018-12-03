@@ -6,10 +6,10 @@ export const DELETE_GRANTOR = 'DELETE_GRANTOR';
 
 const apiURL = 'http://localhost:8000/grantors';
 
-export const addAward = (title, description) => {
+export const addGrantor = (newGrantor) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/add`, {title, description})
+      .post(`${apiURL}`, newGrantor)
       .then(res => dispatch({
         type: ADD_GRANTOR,
         payload: res.data
@@ -17,18 +17,18 @@ export const addAward = (title, description) => {
   }
 }
 
-export const deleteAward = id => {
+export const deleteGrantor = id => {
   return dispatch => {
     axios
       .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_GRANTOR,
-        payload: res.data
+        payload: id
       }));
   };
 }
 
-export const editAward = id => {
+export const editGrantor = id => {
   return dispatch => {
     axios
       .patch(`${apiURL}/edit/${id}`)
@@ -39,7 +39,7 @@ export const editAward = id => {
   }
 }
 
-export const fetchAwards = () => {
+export const fetchGrantors = () => {
   return dispatch => {
     axios
       .get(`${apiURL}`)

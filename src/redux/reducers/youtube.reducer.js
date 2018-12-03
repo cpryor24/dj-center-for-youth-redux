@@ -3,7 +3,7 @@ import {
   DELETE_YOUTUBE,
   EDIT_YOUTUBE,
   FETCH_YOUTUBE_SUCCESS
-} from '../actions.youtube.actions';
+} from '../actions/youtube.actions';
 
 const initialState = [];
 
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
 
     case FETCH_YOUTUBE_SUCCESS:
       return action.payload;
-      
+
     default:
       return state;
   }

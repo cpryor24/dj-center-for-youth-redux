@@ -6,10 +6,10 @@ export const DELETE_EVENT = 'DELETE_EVENT';
 
 const apiURL = 'http://localhost:8000/events';
 
-export const addAward = (title, description, img_url, date, time, venue, address, isActive) => {
+export const addEvent = (newEvent) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/events/add`, {title, description, img_url, date, time, venue, address, isActive})
+      .post(`${apiURL}`, newEvent)
       .then(res => dispatch({
         type: ADD_EVENT,
         payload: res.data
@@ -17,18 +17,18 @@ export const addAward = (title, description, img_url, date, time, venue, address
   }
 }
 
-export const deleteAward = id => {
+export const deleteEvent = id => {
   return dispatch => {
     axios
       .delete(`${apiURL}/events/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_EVENT,
-        payload: res.data
+        payload: id
       }));
   };
 }
 
-export const editAward = id => {
+export const editEvent = id => {
   return dispatch => {
     axios
       .patch(`${apiURL}/events/edit/${id}`)
@@ -39,7 +39,7 @@ export const editAward = id => {
   }
 }
 
-export const fetchAwards = () => {
+export const fetchEvents = () => {
   return dispatch => {
     axios
       .get(`${apiURL}`)

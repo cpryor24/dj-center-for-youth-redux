@@ -6,10 +6,10 @@ export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 
 const apiURL = 'http://localhost:8000/resources';
 
-export const addResource = (title, url) => {
+export const addResource = (newResource) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/add`, {title, url })
+      .post(`${apiURL}`, newResource)
       .then(res => dispatch({
         type: ADD_RESOURCE,
         payload: res.data
@@ -23,7 +23,7 @@ export const deleteResource = id => {
       .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_RESOURCE,
-        payload: res.data
+        payload: id
       }));
   };
 }

@@ -3,14 +3,14 @@ import {
     DELETE_COMMUNITY_PARTNER,
     EDIT_COMMUNITY_PARTNER,
     FETCH_COMMUNITY_PARTNERS_SUCCESS
-} from '../actions.community.actions';
+} from '../actions/community.actions';
 
 const initialState = [];
 
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_COMMUNITY_PARTNER:
-      [...state, action.payload];
+      return [...state, action.payload];
 
     case DELETE_COMMUNITY_PARTNER:
       let selectedId = action.payload;

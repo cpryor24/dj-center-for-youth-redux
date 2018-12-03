@@ -6,10 +6,10 @@ export const DELETE_YOUTUBE = 'DELETE_YOUTUBE';
 
 const apiURL = 'http://localhost:8000/';
 
-export const addYoutube = (title, url) => {
+export const addYoutube = (newYoutube) => {
   return dispatch => {
     axios
-      .post(`${apiURL}/youtube/add`, {title, url })
+      .post(`${apiURL}/youtube/add`, newYoutube)
       .then(res => dispatch({
         type: ADD_YOUTUBE,
         payload: res.data
@@ -23,7 +23,7 @@ export const deleteYoutube = id => {
       .delete(`${apiURL}/youtube/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_YOUTUBE,
-        payload: res.data
+        payload: id
       }));
   };
 }
