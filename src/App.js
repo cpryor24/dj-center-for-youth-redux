@@ -16,6 +16,7 @@ import Grantors from './components/lists/GrantorsList';
 import Programs from './components/lists/ProgramsList';
 import Photos from './components/lists/PhotosList';
 import Resources from './components/lists/ResourcesList';
+import ServiceLearning from './components/lists/ServiceLearningList';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path='/programs' component={Programs} />
           <Route path='/photos' component={Photos} />
           <Route path='/resources' component={Resources} />
+          <Route path='/servicelearning' component={ServiceLearning} />
           <Footer />
         </div>
       </Router>

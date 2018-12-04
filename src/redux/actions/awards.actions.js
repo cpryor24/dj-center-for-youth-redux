@@ -1,5 +1,5 @@
 import axios from 'axios';
-// export const FETCH_AWARDS_SUCCESS = 'FETCH_AWARDS_SUCCESS';
+export const FETCH_AWARDS_SUCCESS = 'FETCH_AWARDS_SUCCESS';
 export const ADD_AWARD = 'ADD_AWARD';
 export const EDIT_AWARD = 'EDIT_AWARD'
 export const DELETE_AWARD = 'DELETE_AWARD';
@@ -39,13 +39,13 @@ export const editAward = id => {
   }
 }
 
-// export const fetchAwards = () => {
-//   return dispatch => {
-//     axios
-//       .get(`${apiURL}`)
-//       .then(res => dispatch({
-//         type: FETCH_AWARDS_SUCCESS,
-//         payload: res.data
-//       }));
-//   };
-// }
+export const fetchAwards = () => {
+  return dispatch => {
+    axios
+      .get(`${apiURL}`)
+      .then(res => dispatch({
+        type: FETCH_AWARDS_SUCCESS,
+        payload: res.data
+      }));
+  };
+}

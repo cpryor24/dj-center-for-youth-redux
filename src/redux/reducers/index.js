@@ -7,7 +7,7 @@ import eventsReducer from './events.reducer';
 import grantorsReducer from './grantors.reducer';
 import photosReducer from './photos.reducer';
 import programsReducer from './programs.reducer';
-import secondaryProgramsReducer from './secondaryprograms.reducer';
+import serviceLearningReducer from './servicelearning.reducer';
 import youtubeReducer from './youtube.reducer';
 
 export default combineReducers({
@@ -19,6 +19,6 @@ export default combineReducers({
   photos: photosReducer,
   programs: programsReducer,
   resources: resourcesReducer,
-  secondaryPrograms: secondaryProgramsReducer,
+  serviceLearning: serviceLearningReducer,
   youtubeVideos: youtubeReducer
 });

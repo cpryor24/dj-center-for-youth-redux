@@ -14,7 +14,7 @@ class AddEventForm extends Component {
     address: ''
   }
 
-  handleFirstNameChange = (e) => {
+  handleIMGURLChange = (e) => {
     this.setState({
       img_url: e.target.value
     })
