@@ -1,15 +1,22 @@
 import React from 'react';
 import AddAwardForm from '../forms/AddAwardForm';
+import Award from '../single/award';
 import { connect } from 'react-redux';
-// import { fetchAwards } from '../../redux/actions/awards.actions';
 
 const AwardsList = (props) => {
-  // props.fetchAwards()
+  let listOfAwards = props.awards.map(award => <Award key={award.id} award={award} />)
   return (
     <div>
       <AddAwardForm />
+      {listOfAwards}
     </div>
   )
 }
 
-export default connect(null)(AwardsList);
+const mapStateToProps = (state) => {
+  return {
+    awards: state.awards
+  }
+}
+
+export default connect(mapStateToProps)(AwardsList);

@@ -18,7 +18,8 @@ export default (state = initialState, action) => {
 
     case EDIT_AWARD:
       let itemId = action.payload;
-      return state.filter(award => award.id !== Number(itemId));
+      let award = state.filter(award => award.id !== Number(itemId));
+      return [...state, action.payload]
 
     case FETCH_AWARDS_SUCCESS:
       return action.payload;

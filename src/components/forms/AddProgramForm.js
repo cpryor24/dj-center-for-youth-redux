@@ -35,16 +35,6 @@ class AddProgramForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <Label for="description">Description</Label>
-          <Input
-            type="text"
-            name="description"
-            id="description"
-            onChange={this.handleDescriptionChange}
-            value={this.state.description}
-            placeholder="Enter Description" />
-        </FormGroup>
-        <FormGroup>
           <Label for="title">Title</Label>
           <Input
             type="text"
@@ -53,6 +43,16 @@ class AddProgramForm extends Component {
             onChange={this.handleTitleChange}
             value={this.state.title}
             placeholder="Enter Title" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="description">Description</Label>
+          <textarea
+            type="text"
+            name="description"
+            id="description"
+            onChange={this.handleDescriptionChange}
+            value={this.state.description}
+            placeholder="Enter Description"></textarea>
         </FormGroup>
         <Button type="submit">Submit</Button>
       </Form>

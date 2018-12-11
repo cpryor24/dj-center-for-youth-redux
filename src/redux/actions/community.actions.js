@@ -17,7 +17,7 @@ export const addCommunityPartner = (newCommunityPartner) => {
   }
 }
 
-export const deleteCommunityPartner= id => {
+export const deleteCommunityPartner = (id) => {
   return dispatch => {
     axios
       .delete(`${apiURL}/delete/${id}`)
@@ -28,7 +28,7 @@ export const deleteCommunityPartner= id => {
   };
 }
 
-export const editCommunityPartner= id => {
+export const editCommunityPartner = (id) => {
   return dispatch => {
     axios
       .patch(`${apiURL}/edit/${id}`)

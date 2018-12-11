@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { connect } from 'react-redux';
-import { addAward } from '../../redux/actions/awards.actions';
+import {connect} from 'react-redux';
+import {
+  deleteAward,
+  editAward
+} from '../../redux/actions/awards.actions';
 
-class AddAwardForm extends Component {
+class UpdateAward extends Component {
+
   state = {
     year: '',
     award_name: ''
@@ -23,17 +27,24 @@ class AddAwardForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addAward(this.state)
-    this.setState({
-      year: '',
-      award_name: ''
-    })
-    e.target.reset();
+    console.log(this.state)
+    this.props.editAward(this.props.award.id, this.state.year, this.state.award_name)
+    // this.setState({
+    //   year: '',
+    //   award_name: ''
+    // })
+    // e.target.reset();
+  }
+
+  handleDeleteClick = (id) => {
+    this.props.deleteAward(id)
   }
 
   render() {
-    if(this.props.isLoggedIn !== true) {
-      return (
+    console.log('state', this.state)
+    console.log('update props', this.props.award)
+    return (
+      <div>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label for="year">Year</Label>
@@ -56,13 +67,19 @@ class AddAwardForm extends Component {
               value={this.state.award_name}
               placeholder="Enter name of award" />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Edit Award</Button>
+          <Button onClick={e => this.handleDeleteClick(this.props.award.id)}>Delete Award</Button>
         </Form>
-      )
-    } else {
-      return <div></div>
-    }
+        <p> </p>
+      </div>
+    )
   }
 }
 
-export default connect(null, { addAward })(AddAwardForm);
+const mapStateToProps = (state, props) => {
+  return {
+    award: state.awards.filter(award => award.id === Number(props.match.params.id))
+  }
+}
+
+export default connect(mapStateToProps, {deleteAward, editAward})(UpdateAward)

@@ -4,7 +4,7 @@ export const ADD_AWARD = 'ADD_AWARD';
 export const EDIT_AWARD = 'EDIT_AWARD'
 export const DELETE_AWARD = 'DELETE_AWARD';
 
-const apiURL = 'http://localhost:8000/awards';
+const apiURL = 'http://localhost:8000/api/awards';
 
 export const addAward = (newAward) => {
   return dispatch => {
@@ -20,7 +20,7 @@ export const addAward = (newAward) => {
 export const deleteAward = id => {
   return dispatch => {
     axios
-      .delete(`${apiURL}/delete/${id}`)
+      .delete(`${apiURL}/${id}`)
       .then(res => dispatch({
         type: DELETE_AWARD,
         payload: id
@@ -28,13 +28,16 @@ export const deleteAward = id => {
   };
 }
 
-export const editAward = id => {
+export const editAward = (id, year, award_name) => {
   return dispatch => {
     axios
-      .patch(`${apiURL}/edit/${id}`)
+      .patch(`${apiURL}/${id}`, {
+        year: year,
+        award_name: award_name
+      })
       .then(res => dispatch({
         type: EDIT_AWARD,
-        payload: res.data
+        payload: console.log(res.data)
       }))
   }
 }

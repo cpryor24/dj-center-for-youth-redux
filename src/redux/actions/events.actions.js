@@ -20,7 +20,7 @@ export const addEvent = (newEvent) => {
 export const deleteEvent = id => {
   return dispatch => {
     axios
-      .delete(`${apiURL}/events/delete/${id}`)
+      .delete(`${apiURL}/delete/${id}`)
       .then(res => dispatch({
         type: DELETE_EVENT,
         payload: id
@@ -31,7 +31,7 @@ export const deleteEvent = id => {
 export const editEvent = id => {
   return dispatch => {
     axios
-      .patch(`${apiURL}/events/edit/${id}`)
+      .patch(`${apiURL}/edit/${id}`)
       .then(res => dispatch({
         type: EDIT_EVENT,
         payload: res.data
